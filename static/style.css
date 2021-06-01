@@ -30,6 +30,17 @@ div#loading {
   height: 35px;
   cursor: wait;
   }
+
+
+#sidebar-bottom-div  {
+    position: fixed;
+    bottom: 0;
+  }
+
+#sidebar-back-button {
+  color: grey;
+  text-decoration: underline;
+}
  
 #header{
     background: #d6d6d6;
@@ -41,20 +52,11 @@ div#loading {
     height: 100%;
 }
 
-#footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background: #dddddd; 
-    text-align: center;
-  }
 
 #content {
   text-align: center;
 }
 
- 
 .wrap{
     max-width: 1200px;
     margin: 0 auto;

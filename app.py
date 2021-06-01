@@ -3,7 +3,13 @@ from flask import Flask, render_template
 from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
 import pickle
+import matplotlib.pyplot as plot
+import numpy as np
 from pyAudioAnalysis import MidTermFeatures as aF
+from pyAudioAnalysis import audioBasicIO as aIO 
+import IPython
+import scipy.io.wavfile as wavfile
+from sklearn.preprocessing import PowerTransformer
 import pandas as pd
 import shutil
 
@@ -14,10 +20,10 @@ import shutil
 ### Define constant variables 
 ####################################################
 
-modelLG = pickle.load(open("model_test.sav","rb"))
-modelKNN = pickle.load(open("model_test_knn.sav","rb"))
-modelRF = pickle.load(open("model_test_tree.sav","rb"))
-modelSVM = pickle.load(open("svm.sav","rb"))
+modelLG = pickle.load(open("models/model_test.sav","rb"))
+modelKNN = pickle.load(open("models/model_test_knn.sav","rb"))
+modelRF = pickle.load(open("models/model_test_tree.sav","rb"))
+modelSVM = pickle.load(open("models/svm.sav","rb"))
 
 
 
@@ -119,7 +125,7 @@ def upload_file():
         elif model == 'svm':
             result_list = svm(features[0], features[1])
 
-        text = "Your file " + str(result_list[0]) + "\'s predicted genre is " + str(result_list[1]) + " with the model " + str(result_list[2]) + "!"
+        text = "Your file " + str(result_list[0]) + "\'s predicted genre is <b style=\"color:red;\">" + str(result_list[1]) + "</b> with the model " + str(result_list[2]) + "!"
         return render_template("results.html", text = text)
 
 @app.route('/result', methods=['POST'])
