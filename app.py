@@ -3,13 +3,7 @@ from flask import Flask, render_template
 from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
 import pickle
-import matplotlib.pyplot as plot
-import numpy as np
 from pyAudioAnalysis import MidTermFeatures as aF
-from pyAudioAnalysis import audioBasicIO as aIO 
-import IPython
-import scipy.io.wavfile as wavfile
-from sklearn.preprocessing import PowerTransformer
 import pandas as pd
 import shutil
 
